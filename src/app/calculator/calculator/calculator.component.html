@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="calculator">
+    <div class="interface">
+
+      <div class="history">
+        <ul>
+          <li *ngFor="let item of items$ | async as items; let i = index">
+            <a *ngIf="i > items.length-4">
+              {{item.value}}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="result">
+        <p>{{display}}</p>
+      </div>
+
+      <div class="keyboard">
+
+        <!-- 0 row -->
+        <div class="section-up">
+          <button type="button" class="all-clear" (click)="resetValues()">AC</button>
+          <button type="button" (click)="setMinusOperator()">+/-</button>
+        </div>
+
+        <!-- 1 row -->
+        <div class="section-2">
+          <button type="button" (click)="numClick('7')">7</button>
+          <button type="button" (click)="numClick('8')">8</button>
+          <button type="button" (click)="numClick('9')">9</button>
+          <button type="button" (click)="pressOperator('÷')">÷</button>
+        </div>
+
+        <!-- 2 row -->
+        <div class="section-2">
+          <button type="button" (click)="numClick('4')">4</button>
+          <button type="button" (click)="numClick('5')">5</button>
+          <button type="button" (click)="numClick('6')">6</button>
+          <button type="button" (click)="pressOperator('*')">x</button>
+        </div>
+
+        <!-- 3 row -->
+        <div class="section-2">
+          <button type="button" (click)="numClick('1')">1</button>
+          <button type="button" (click)="numClick('2')">2</button>
+          <button type="button" (click)="numClick('3')">3</button>
+          <button type="button" (click)="pressOperator('-')">-</button>
+        </div>
+
+        <!-- 4 row -->
+        <div class="section-2">
+          <button type="button" (click)="numClick('0')">0</button>
+          <button type="button" (click)="setDecimalPoint()">.</button>
+          <button type="button" class="equalOperator" (click)="doCalculation('=')">=</button>
+          <button type="button" (click)="pressOperator('+')">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
