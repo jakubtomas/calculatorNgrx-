@@ -13,7 +13,7 @@ import { isLoadingSelector, itemsSelector } from '../store/selectors';
   styleUrls: ['./calculator.component.css']
 })
 export class CalculatorComponent implements OnInit {
-
+  //
   display = '0';
   firstNumber: number | null = null;
   secondNumber: number | null = null;
@@ -27,11 +27,6 @@ export class CalculatorComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(PostsActions.getCalculatorData())
-  }
-
-  addNumber(): void {
-    const value: Item = { id: 1, value: "hello" };
-    this.store.dispatch(PostsActions.addItem({ item: value }))
   }
 
   numClick(number: string): void {
