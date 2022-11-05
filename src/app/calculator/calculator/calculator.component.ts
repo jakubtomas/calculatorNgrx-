@@ -73,7 +73,6 @@ export class CalculatorComponent implements OnInit {
     if (this.firstNumber !== null && this.secondNumber !== null && this.action !== null) {
       this.doCalculation(action)
     }
-
   }
 
   setSecondNumber(): void {
