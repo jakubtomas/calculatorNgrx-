@@ -18,28 +18,12 @@ export class CalculatorComponent implements OnInit {
   firstNumber: number | null = null;
   secondNumber: number | null = null;
   minusOperator: boolean = false;
-
   changedNewNumber: boolean = false;
-
   newNumber: string = '0';
   action: string | null = null;
 
-  isLoading$: Observable<boolean>;
-  //error$: Observable<String | null>;
-  //items$: Observable<Item[]>;
   items$: Observable<Item[]> = this.store.select(itemsSelector)
-
-
-  constructor(private store: Store<AppStateInterface>) {
-
-    this.isLoading$ = this.store.pipe(select(isLoadingSelector))
-
-    //this.items$ = this.store.pipe(select(itemsSelector))
-    //this.error$ = this.store.pipe(select(errorSelector))
-
-    //this.isLoading$ = this.store.select(getCalculatorData);
-
-  }
+  constructor(private store: Store<AppStateInterface>) { }
 
   ngOnInit(): void {
     this.store.dispatch(PostsActions.getCalculatorData())
@@ -60,8 +44,6 @@ export class CalculatorComponent implements OnInit {
     } else {
       this.display = this.newNumber
     }
-
-
   }
 
   pressOperator(action: string): void {
@@ -130,7 +112,7 @@ export class CalculatorComponent implements OnInit {
         result = a - b;
       }
 
-      result = +(result).toFixed(10)
+      result = +(result).toFixed(10);
 
       this.display = result.toString() + nextAction;
       this.firstNumber = result;
